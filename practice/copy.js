@@ -41,6 +41,3 @@ fs.writeFileSync(file, obj);
 calc(country,population,data1);
 calc(country,gdp,data2);
 calc(country,purchase,data3);
-
-
-//asian country
