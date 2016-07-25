@@ -7,26 +7,26 @@ var arrayOne= stringData.split('\r\n');
 var noOfRow=arrayOne.length;
 var header=arrayOne[0].split(',');
 var noOfCol=header.length;
-var param='Country Name';
-var p='data.json';
-var p1='data1.json';
-var p2='data2.json';
-var param1='Population (Millions) - 2013';
-var param2='GDP Billions (US$) - 2013';
-var param3='Purchasing Power in Billions ( Current International Dollar) - 2013';
-function calc(a1,a2,p)
+var country='Country Name';
+var d='data.json';
+var d1='data1.json';
+var d2='data2.json';
+var population='Population (Millions) - 2013';
+var gdp='GDP Billions (US$) - 2013';
+var purchase='Purchasing Power in Billions ( Current International Dollar) - 2013';
+function calc(a1,a2,d)
 {
 var jArray=[];
 var final_obj={};
-var cnt=header.indexOf(a1);
-var cnt1=header.indexOf(a2);
+//var cnt=header.indexOf(a1);
+//var cnt1=header.indexOf(a2);
 for (i = 1; i < noOfRow-1; i++)
 {
   var myNewLine=arrayOne[i].split(',');
-  if(myNewLine[cnt] != "European Union")
+  if(myNewLine[a1] != "European Union")
   {
-  final_obj[header[cnt]]=myNewLine[cnt];
-  final_obj[header[cnt1]]=myNewLine[cnt1];
+  final_obj[header[a1]]=myNewLine[a1];
+  final_obj[header[a2]]=myNewLine[a2];
   jArray.push(final_obj);
   jArray.sort(function(a,b)
   {
@@ -36,10 +36,10 @@ for (i = 1; i < noOfRow-1; i++)
   }
 }
 console.log(jArray);
-var file = p;
+var file = d;
 var obj = JSON.stringify(jArray);
 fs.writeFileSync(file, obj);
 }
-calc(param,param1,p);
-calc(param,param2,p1);
-calc(param,param3,p2);
+calc(country,population,d);
+calc(country,gdp,d1);
+calc(country,purchase,d2);
